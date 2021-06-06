@@ -1,0 +1,40 @@
+<template>
+  <div
+    v-if="selected"
+    class="
+      p-4
+      shadow
+      text-graysteel
+      mt-3
+      flex
+      items-center
+      justify-between
+      text-sm
+    "
+  >
+    <div class="">
+      <div class="font-medium mb-2">
+        {{ selected.name }}
+      </div>
+      <div>
+        <div>{{ selected.addressLine1 }}</div>
+        <div>{{ selected.city }}, {{ selected.state }} {{ selected.zip }}</div>
+        <div>{{ selected.country }}</div>
+      </div>
+    </div>
+
+    <div class="cursor-pointer w-8">
+      <img src="../assets/remove.svg" class="h-4" @click="$emit('remove')" />
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { defineProps, defineEmit } from "vue";
+
+defineProps({
+  selected: Object,
+});
+
+defineEmit(["remove"]);
+</script>

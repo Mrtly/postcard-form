@@ -6,8 +6,8 @@
       :placeholder="placeholder"
       :value="modelValue"
       :class="[
-        'w-full h-12 pl-2 bg-white shadow-md border-none rounded-md',
-        'focus:outline-none focus:ring-0 focus:shadow-lg',
+        'w-full h-12 pl-2 bg-white shadow-md border border-transparent rounded-sm',
+        'focus:outline-none focus:border-cobalt focus:ring-0 focus:shadow-lg',
       ]"
       @input="updateValue"
     />

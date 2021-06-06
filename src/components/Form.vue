@@ -7,11 +7,23 @@
       class="mt-5"
     />
     <InputField
+      v-if="!selectedToAddress"
       v-model="formData.to"
       search
       label="To"
       placeholder="Recipient Name"
       class="mt-5"
+    />
+    <SelectedAddressTile
+      v-if="selectedToAddress != null"
+      :selected="selectedToAddress"
+      class="mt-5"
+      @remove="removeSelectedToAddress"
+    />
+    <AddressSearchDropdown
+      v-if="searchResults && !selectedToAddress"
+      :results="searchResults"
+      @addressSelected="selectThisAddress($event)"
     />
     <InputField
       search
@@ -37,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, watch } from "vue";
+import { reactive, ref, watch } from "vue";
 
 const formData = reactive({
   description: null as string | null,
@@ -46,6 +58,33 @@ const formData = reactive({
   front: null as string | null,
   back: null as string | null,
 });
+
+let searchResults = ref(null);
+
+//@ts-ignore
+// searchResults.value = [
+//   {
+//     id: "adr_a2d46a94a70edfa9",
+//     name: "BRETT VARGAS",
+//     addressLine1: "70 FLANTY TERR",
+//     city: "MINNEAPOLIS",
+//     zip: "55401",
+//     state: "MN",
+//     country: "UNITED STATES",
+//   },
+// ];
+
+let selectedToAddress = ref(null);
+
+function selectThisAddress(id: string) {
+  console.log("id is " + id);
+  //@ts-ignore (possibly null)
+  selectedToAddress.value = searchResults.value.find((r: Object) => r.id == id);
+}
+
+function removeSelectedToAddress() {
+  selectedToAddress.value = null;
+}
 
 function submitForm() {
   console.log(formData);

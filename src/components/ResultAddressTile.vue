@@ -1,0 +1,29 @@
+<template>
+  <div v-if="name" class="py-4 cursor-pointer">
+    <div class="font-medium">
+      {{ name }}
+    </div>
+    <div class="mt-3 flex items-center justify-between text-sm">
+      <div>
+        <div>{{ addressLine1 }}</div>
+        <div>{{ city }}, {{ state }} {{ zip }}</div>
+        <div>{{ country }}</div>
+      </div>
+      <div>{{ id }}</div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { defineProps } from "vue";
+
+defineProps({
+  id: String,
+  name: String,
+  addressLine1: String,
+  city: String,
+  zip: String,
+  state: String,
+  country: String,
+});
+</script>
