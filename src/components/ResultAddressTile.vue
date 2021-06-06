@@ -5,7 +5,7 @@
     </div>
     <div class="mt-3 flex items-center justify-between text-sm">
       <div>
-        <div>{{ addressLine1 }}</div>
+        <div>{{ address }}</div>
         <div>{{ city }}, {{ state }} {{ zip }}</div>
         <div>{{ country }}</div>
       </div>
@@ -20,7 +20,7 @@ import { defineProps } from "vue";
 defineProps({
   id: String,
   name: String,
-  addressLine1: String,
+  address: String,
   city: String,
   zip: String,
   state: String,

@@ -3069,7 +3069,7 @@ packages:
     engines: { node: ">= 10.0.0" }
     dev: true
 
-  /unzipper/0.10.11:
+  /unaddress_zipper/0.10.11:
     resolution:
       {
         integrity: sha512-+BrAq2oFqWod5IESRjL3S8baohbevGcVA+teAIOYWM3pDVdseogqbzhhvvmiyQrUNKFUnDMtELW3X8ykbyDCJw==,
@@ -3178,7 +3178,7 @@ packages:
       }
     hasBin: true
     dependencies:
-      unzipper: 0.10.11
+      unaddress_zipper: 0.10.11
     dev: true
 
   /vue/3.0.11:

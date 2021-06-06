@@ -17,9 +17,12 @@
         {{ selected.name }}
       </div>
       <div>
-        <div>{{ selected.addressLine1 }}</div>
-        <div>{{ selected.city }}, {{ selected.state }} {{ selected.zip }}</div>
-        <div>{{ selected.country }}</div>
+        <div>{{ selected.address_line1 }}</div>
+        <div>
+          {{ selected.address_city }}, {{ selected.address_state }}
+          {{ selected.address_zip }}
+        </div>
+        <div>{{ selected.address_country }}</div>
       </div>
     </div>
 

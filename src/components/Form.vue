@@ -60,41 +60,46 @@ const formData = reactive({
 });
 
 let searchResults = ref(null);
-
-//@ts-ignore
-// searchResults.value = [
-//   {
-//     id: "adr_a2d46a94a70edfa9",
-//     name: "BRETT VARGAS",
-//     addressLine1: "70 FLANTY TERR",
-//     city: "MINNEAPOLIS",
-//     zip: "55401",
-//     state: "MN",
-//     country: "UNITED STATES",
-//   },
-// ];
-
 let selectedToAddress = ref(null);
 
 function selectThisAddress(id: string) {
-  console.log("id is " + id);
   //@ts-ignore (possibly null)
   selectedToAddress.value = searchResults.value.find((r: Object) => r.id == id);
 }
 
 function removeSelectedToAddress() {
   selectedToAddress.value = null;
+  searchResults.value = null;
+  formData.to = null;
 }
 
-function submitForm() {
-  console.log(formData);
+//fetch search results
+async function searchAddressTo(query: string) {
+  let url = `https://api.lob.com/v1/search/?types=addresses&q=${query}`;
+  let username = "test_8ddaad35dc02260ae8a4e6e33d9f3ade7ae";
+  let password = "";
+  try {
+    await fetch(url, {
+      headers: {
+        Authorization: "Basic " + btoa(`${username}:${password}`),
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => (searchResults.value = data.data));
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
 }
 
 watch(
   () => formData.to,
   () => {
-    //this will call the search
-    console.log(formData.to);
+    searchAddressTo(formData?.to!);
   }
 );
+
+function submitForm() {
+  console.log(formData);
+}
 </script>

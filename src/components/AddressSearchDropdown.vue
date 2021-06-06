@@ -24,11 +24,11 @@
       <ResultAddressTile
         :id="result.id"
         :name="result.name"
-        :addressLine1="result.addressLine1"
-        :city="result.city"
-        :zip="result.zip"
-        :state="result.state"
-        :country="result.country"
+        :address="result.address_line1"
+        :city="result.address_city"
+        :zip="result.address_zip"
+        :state="result.address_state"
+        :country="result.address_country"
         @click="selectedAddress(result.id)"
       />
     </div>
@@ -42,11 +42,11 @@ import type { PropType } from "vue";
 interface AddressResult {
   id: String;
   name: String;
-  addressLine1: String;
-  city: String;
-  zip: String;
-  state: String;
-  country: String;
+  address_line1: String;
+  address_city: String;
+  address_zip: String;
+  address_state: String;
+  address_country: String;
 }
 
 defineProps({
