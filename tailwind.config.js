@@ -16,9 +16,8 @@ module.exports = {
     },
     extend: {
       boxShadow: {
-      button: "0 0 10px 0 #94D3EC",
-    },
-
+        button: "0 0 10px 0 #94D3EC",
+      },
     },
   },
   variants: {
