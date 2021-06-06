@@ -1,5 +1,5 @@
 <template>
-  <div v-if="name" class="py-4 cursor-pointer">
+  <div v-if="name" class="py-4 cursor-pointer text-grayshadow50">
     <div class="font-medium">
       {{ name }}
     </div>

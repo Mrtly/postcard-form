@@ -1,18 +1,9 @@
 <template>
   <div
     v-if="selected"
-    class="
-      p-4
-      shadow
-      text-graysteel
-      mt-3
-      flex
-      items-center
-      justify-between
-      text-sm
-    "
+    class="p-4 shadow mt-3 flex items-center justify-between text-sm"
   >
-    <div class="">
+    <div class="text-grayshadow50">
       <div class="font-medium mb-2">
         {{ selected.name }}
       </div>
@@ -26,7 +17,7 @@
       </div>
     </div>
 
-    <div class="cursor-pointer w-8">
+    <div class="cursor-pointer w-4">
       <img src="../assets/remove.svg" class="h-4" @click="$emit('remove')" />
     </div>
   </div>

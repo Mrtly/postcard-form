@@ -21,27 +21,26 @@
       @remove="removeSelectedToAddress"
     />
     <AddressSearchDropdown
-      v-if="searchResults && !selectedToAddress"
-      :results="searchResults"
+      v-if="searchResults != 0 && !selectedToAddress"
+      :results="searchData"
       @addressSelected="selectThisAddress($event)"
     />
     <InputField
-      search
       v-model="formData.from"
       label="From"
-      placeholder="Describe"
+      placeholder="from"
       class="mt-5"
     />
     <InputField
       v-model="formData.front"
       label="Front"
-      placeholder="link"
+      placeholder="link-to-image"
       class="mt-5"
     />
     <InputField
       v-model="formData.back"
       label="Back"
-      placeholder="link"
+      placeholder="link-to-image"
       class="mt-5"
     />
     <DesktopButton label="Submit" class="mt-10" />
@@ -59,21 +58,22 @@ const formData = reactive({
   back: null as string | null,
 });
 
-let searchResults = ref(null);
+let searchResults = ref(0);
+let searchData = ref(null);
 let selectedToAddress = ref(null);
 
 function selectThisAddress(id: string) {
   //@ts-ignore (possibly null)
-  selectedToAddress.value = searchResults.value.find((r: Object) => r.id == id);
+  selectedToAddress.value = searchData.value.find((r: Object) => r.id == id);
+  formData.to = selectedToAddress.value;
 }
 
 function removeSelectedToAddress() {
   selectedToAddress.value = null;
-  searchResults.value = null;
+  searchData.value = null;
   formData.to = null;
 }
 
-//fetch search results
 async function searchAddressTo(query: string) {
   let url = `https://api.lob.com/v1/search/?types=addresses&q=${query}`;
   let username = "test_8ddaad35dc02260ae8a4e6e33d9f3ade7ae";
@@ -85,7 +85,10 @@ async function searchAddressTo(query: string) {
       },
     })
       .then((response) => response.json())
-      .then((data) => (searchResults.value = data.data));
+      .then((data) => {
+        searchResults.value = data.count;
+        searchData.value = data.data;
+      });
   } catch (e) {
     console.log(e);
     throw e;

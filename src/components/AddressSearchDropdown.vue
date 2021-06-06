@@ -5,7 +5,7 @@
       text-graysteel
       absolute
       shadow
-      max-w-md
+      max-w-lg
       w-full
       py-2
       px-5
