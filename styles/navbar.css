@@ -1,0 +1,41 @@
+.header {
+  width: 100%;
+  padding: 20px;
+  border-bottom: 2px solid var(--color-grayblue);
+}
+.navbar {
+  width: 215px;
+  background-color: var(--color-grayalt);
+  height: 100vh;
+  border-right: 2px solid var(--color-grayblue);
+  font-size: 14px;
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar li {
+  padding: 16px;
+  cursor: pointer;
+  font-weight: 300;
+}
+
+.navbar li:active,
+.navbar li:hover {
+  background-color: var(--color-grayfog);
+  font-weight: 400;
+}
+
+.navbar li a {
+  text-decoration: none;
+  color: var(--color-grayshadow50);
+  display: flex;
+  align-items: center;
+}
+
+.navbar li a img {
+  margin-right: 8px;
+}
